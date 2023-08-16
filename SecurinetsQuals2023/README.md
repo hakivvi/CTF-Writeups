@@ -2,3 +2,5 @@
 
 - Web:
   - [0CSP](WEB/0CSP)
+  - [Pinder](#) (basic XSS, no writeup)
+  - [Mark4Archive](WEB/Mark4Archive)

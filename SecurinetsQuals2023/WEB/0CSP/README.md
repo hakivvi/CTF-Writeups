@@ -37,6 +37,7 @@ def report():
 ```
 
 this is the main page when visiting the challenge link:
+
 ![](assets/main.png)
 
 this is the JS code executing when the page loads:
@@ -236,7 +237,7 @@ the app has 2 interesting endpoints:
 
 ![](assets/securinets.png)
 
-`/securinets` is using DOMPurify so no XSS, unlink `/helloworld`, however the XSS must come from the response of (`/GetToken`). lets see if we can change it:
+`/securinets` is using DOMPurify so no XSS, unlike `/helloworld`, however the XSS must come from the response of (`/GetToken`). lets see if we can change it:
 ```py
 @app.route('/GetToken', methods=['GET', 'OPTIONS'])
 def get_token():
