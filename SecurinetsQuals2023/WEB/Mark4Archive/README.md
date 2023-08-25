@@ -147,7 +147,7 @@ the only problem is that Varnish config denies access to this endpoint:
 
 ![403](assets/403.png)
 
-However we can bypass this regex with `//api/pdf`, the intended bypass was to exploit a recent discovered HTTP request smuggling issue in Varnish server (read me [here](https://repzret.blogspot.com/2023/08/analyzing-weird-websocket-based-http.html)).
+However we can bypass this regex with `//api/pdf`, the intended bypass was to exploit a recent discovered HTTP request smuggling issue in Varnish server (read more [here](https://repzret.blogspot.com/2023/08/analyzing-weird-websocket-based-http.html)).
 
 ![403 bypass](assets/403_bypass.png)
 
