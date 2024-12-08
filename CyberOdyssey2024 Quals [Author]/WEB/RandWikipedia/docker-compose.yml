@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  gates:
+    build:
+      context: ./gates
+    ports:
+      - "80:80"
+    depends_on:
+      - feed
+      - flag
+
+  feed:
+    build:
+      context: ./feed
+
+  flag:
+    build:
+      context: ./flag
+    environment:
+      FLAG: "CTF{test}"
+
