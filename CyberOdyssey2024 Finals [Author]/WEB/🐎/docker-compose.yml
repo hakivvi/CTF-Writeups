@@ -1,0 +1,29 @@
+version: '3'
+name: horsey
+
+services:
+  db:
+    image: mysql:5.7
+    build:
+      context: ./mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+    ports:
+      - "3306:3306"
+    networks:
+      - net
+  app:
+    build:
+      context: ./app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      FLAG: "ODYSSEY{!______C0NGRATS_ON_WINNING_THE_R444CE}"
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge

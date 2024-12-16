@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    container_name: webwebweb-db
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    networks:
+      - net
+    healthcheck:
+      test: >
+        PGPASSWORD=password psql -h localhost -U user -d db -c 'update app_experience set text = '\''Ruby/Ruby on Rails/🎩'\'', hot = 'true', owner_id = 1, web_framework_id = 1 where id = 1; BEGIN; WITH first_row AS ( SELECT id FROM django_site ORDER BY id LIMIT 1 ) DELETE FROM django_site WHERE id > (SELECT id FROM first_row); TRUNCATE TABLE django_flatpage, django_flatpage_sites CASCADE; COMMIT;'
+      interval: 5m
+      retries: 3
+      start_period: 1m
+      timeout: 20s
+
+  backend:
+    build:
+      context: ./backend
+    container_name: webwebweb-backend
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - net
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: webwebweb-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
